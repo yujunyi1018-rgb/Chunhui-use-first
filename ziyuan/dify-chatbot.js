@@ -35,16 +35,15 @@
     var script = document.createElement("script");
     script.src = "https://udify.app/embed.min.js";
     script.id = scriptId;
+    script.async = true;
     script.defer = true;
-    document.body.appendChild(script);
+    (document.body || document.documentElement).appendChild(script);
   }
 
-  // Load after the page is ready so the chatbot never blocks the main content.
-  if (document.readyState === "complete") {
-    setTimeout(loadScript, 1500);
+  // This file is loaded near </body>, so start fetching Dify as soon as it runs.
+  if (document.body) {
+    loadScript();
   } else {
-    window.addEventListener("load", function () {
-      setTimeout(loadScript, 1500);
-    });
+    document.addEventListener("DOMContentLoaded", loadScript, { once: true });
   }
 })();
