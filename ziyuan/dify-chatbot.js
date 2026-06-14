@@ -1,12 +1,9 @@
 (function () {
   var token = "OLjiwrNfuhfXcfFM";
-  var baseUrl = "https://udify.app";
   var scriptId = token;
 
   window.difyChatbotConfig = {
     token: token,
-    isDev: false,
-    baseUrl: baseUrl,
     inputs: {},
     systemVariables: {},
     userVariables: {},
@@ -36,7 +33,7 @@
     }
 
     var script = document.createElement("script");
-    script.src = baseUrl + "/embed.min.js";
+    script.src = "https://udify.app/embed.min.js";
     script.id = scriptId;
     script.defer = true;
     document.body.appendChild(script);
